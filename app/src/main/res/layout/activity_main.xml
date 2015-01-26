@@ -1,0 +1,153 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#CCFFCC"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context=".MainActivity">
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="@drawable/background"
+        android:paddingTop="60dp" >
+
+        <TextView
+            android:id="@+id/Title1"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:text="@string/Title1"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_centerInParent="true"
+            android:textColor="@android:color/black"
+            android:textSize="30sp"
+            android:textAlignment="center"
+            android:layout_centerVertical="@bool/abc_config_actionMenuItemAllCaps"/>
+
+        <TextView
+            android:id="@+id/Title2"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:text="@string/Title2"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_centerInParent="true"
+            android:textColor="@android:color/black"
+            android:textSize="20sp"
+            android:textAlignment="center"
+            android:layout_marginTop="70dp"/>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:paddingTop="170dp" >
+
+            <RelativeLayout
+                android:id="@+id/task1layout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
+
+                <ImageView
+                    android:id="@+id/Task1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="Helicopter1"
+                    android:paddingRight="10dp"
+                    android:src="@drawable/games_buttons" />
+
+                <TextView
+                    android:id="@+id/Helicopter1"
+                    android:text="@string/Helicopter1"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:textColor="@android:color/black"
+                    android:textSize="22sp"
+                    android:textAlignment="center" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/task3layout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingRight="10dp"
+                android:layout_marginTop="140dp">
+
+                <ImageView
+                    android:id="@+id/Task3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="Helicopter3"
+                    android:src="@drawable/games_buttons" />
+
+                <TextView
+                    android:id="@+id/Helicopter3"
+                    android:text="@string/Helicopter3"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:textColor="@android:color/black"
+                    android:textSize="22sp"
+                    android:textAlignment="center" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/task2layout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/task1layout" >
+
+                <ImageView
+                    android:id="@+id/Task2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="Helicopter2"
+                    android:paddingLeft="10dp"
+                    android:src="@drawable/games_buttons" />
+                <TextView
+                    android:id="@+id/Helicopter2"
+                    android:text="@string/Helicopter2"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:textColor="@android:color/black"
+                    android:textSize="22sp"
+                    android:textAlignment="center" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/task4layout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingRight="10dp"
+                android:layout_marginTop="140dp"
+                android:layout_toRightOf="@id/task3layout">
+
+                <ImageView
+                    android:id="@+id/Task4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="Pong"
+                    android:src="@drawable/games_buttons"
+                    android:paddingLeft="10dp"/>
+
+                <TextView
+                    android:id="@+id/Pong"
+                    android:text="@string/Pong"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:textColor="@android:color/black"
+                    android:textSize="22sp"
+                    android:textAlignment="center" />
+            </RelativeLayout>
+
+        </RelativeLayout>
+    </RelativeLayout>
+
+</RelativeLayout>
