@@ -25,7 +25,7 @@ public class Heli1 extends State {
         aSprite = new Sprite(aImage);
         westWall = new Sprite(wallVerImage);
         westWall.setPosition(4, 215);
-        /*aSprite.setPosition(200, 120);*/
+        aSprite.setPosition(200, 120);
         aSprite.setSpeed(40, 0); // it should move right direction, but since collides bug, it will move (-40,0),  If we input (-40,0), it move (40,0), after collides, helicopter is disappeared. bug?
         heliSprite.setPosition(40, 120);
         heliSprite.setSpeed(40, 0);
@@ -36,7 +36,7 @@ public class Heli1 extends State {
     public void draw(android.graphics.Canvas canvas){
         backSprite.draw(canvas);
         westWall.draw(canvas);
-        /*aSprite.draw(canvas);*/
+        aSprite.draw(canvas);
         heliSprite.draw(canvas);
     }
 
