@@ -3,6 +3,7 @@ package com.example.leonardolopez.games;
 import sheep.game.State;
 import sheep.graphics.Font;
 
+import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.*;
 import android.view.MotionEvent;
@@ -15,6 +16,8 @@ public class Heli3State extends State implements TouchListener{
     private HeliModel heli2;
     private HeliModel heli3;
     private int canvasHeight, canvasWidth;
+    private int scrnW;
+    private int scrnH;
 
 
 
@@ -30,14 +33,18 @@ public class Heli3State extends State implements TouchListener{
         return true;
     }
 
-    public Heli3State(Resources resources){
+    public Heli3State(Resources resources, Context context){
+
+        this.scrnW= context.getResources().getDisplayMetrics().widthPixels;
+        this.scrnH= context.getResources().getDisplayMetrics().heightPixels;
+
         heli1 = new HeliModel(BitmapFactory.decodeResource(resources, R.drawable.helisprite),0,0,100,4);
         heli2 = new HeliModel(BitmapFactory.decodeResource(resources, R.drawable.helisprite),300,400,100,4);
         heli3 = new HeliModel(BitmapFactory.decodeResource(resources, R.drawable.helisprite),300,100,100,4);
 
-        heli1.setSpeed(800, 800);
-        heli2.setSpeed(800, -800);
-        heli3.setSpeed(800, 800);
+        heli1.setSpeed(1000, -1000);
+        heli2.setSpeed(-1000, 1000);
+        heli3.setSpeed(-1000, -1000);
 
         heli1.update(System.currentTimeMillis());
         heli2.update(System.currentTimeMillis());
@@ -46,14 +53,16 @@ public class Heli3State extends State implements TouchListener{
 
     @Override
     public void draw(Canvas canvas) {
-        //canvasHeight = canvas.getHeight();
-        //canvasWidth = canvas.getWidth();
+        canvasHeight = canvas.getHeight();
+        canvasWidth = canvas.getWidth();
         canvas.drawColor(Color.BLACK);
         heli1.draw(canvas);
         heli2.draw(canvas);
         heli3.draw(canvas);
         Font font = new Font(0, 55, 20, 30, Typeface.SERIF, Typeface.NORMAL);
-        canvas.drawText("Helicopter 1 Position (X:" + heli1.getX() + ", Y:" + heli1.getY() +")", 30, 800, font);
+        canvas.drawText("Helicopter 1 Position (X:" + heli1.getX() + ", Y:" + heli1.getY() +")", 30, this.scrnH-90, font);
+        canvas.drawText("Helicopter 2 Position (X:" + heli2.getX() + ", Y:" + heli2.getY() +")", 30, this.scrnH-60, font);
+        canvas.drawText("Helicopter 3 Position (X:" + heli3.getX() + ", Y:" + heli3.getY() +")", 30, this.scrnH-30, font);
     }
 
     @Override

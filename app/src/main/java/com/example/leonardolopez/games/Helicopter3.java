@@ -24,7 +24,7 @@ public class Helicopter3 extends Activity {
         // Create the game.
         Game game = new Game(this, null);
         // Push the main state.
-        game.pushState(new Heli3State(game.getResources()));
+        game.pushState(new Heli3State(game.getResources(), this.getBaseContext()));
         // View the game.
         setContentView(game);
     }
