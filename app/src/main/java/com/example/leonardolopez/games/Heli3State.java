@@ -8,9 +8,9 @@ import android.view.MotionEvent;
 import sheep.input.TouchListener;
 
 
-public class Heli1State extends State implements TouchListener{
+public class Heli3State extends State implements TouchListener{
 
-    private Heli1sp helicopter;
+    private Heli3 helicopter;
     private int canvasHeight, canvasWidth;
 
 
@@ -30,8 +30,8 @@ public class Heli1State extends State implements TouchListener{
         return true;
     }
 
-    public Heli1State(Resources resources){
-        helicopter = new Heli1sp(BitmapFactory.decodeResource(resources, R.drawable.helisprite),
+    public Heli3State(Resources resources){
+        helicopter = new Heli3(BitmapFactory.decodeResource(resources, R.drawable.helisprite),
                 0, 0, 	//x, y
                 100,		//fps
                 4		//frameCount

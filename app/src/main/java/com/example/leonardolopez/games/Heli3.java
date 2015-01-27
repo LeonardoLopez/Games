@@ -8,7 +8,7 @@ import android.graphics.drawable.BitmapDrawable;
 import android.util.DisplayMetrics;
 import sheep.game.Sprite;
 
-public class Heli1sp extends Sprite {
+public class Heli3 extends Sprite {
 
     private Bitmap bitmap;      // the animation sequence
     private Rect sourceRect;    // the rectangle to be drawn from the animation bitmap
@@ -22,7 +22,7 @@ public class Heli1sp extends Sprite {
     private float y;
 
 
-    public Heli1sp(Bitmap bitmap, float x, float y, int fps, int frameCount){
+    public Heli3(Bitmap bitmap, float x, float y, int fps, int frameCount){
         this.bitmap = bitmap;
         this.x = x;
         this.y = y;

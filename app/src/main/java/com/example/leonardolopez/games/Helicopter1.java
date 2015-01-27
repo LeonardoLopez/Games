@@ -13,7 +13,7 @@ public class Helicopter1 extends Activity {
         // Create the game.
         Game game = new Game(this, null);
         // Push the main state.
-        game.pushState(new Heli1State(game.getResources()));
+        game.pushState(new Heli1());
         // View the game.
         setContentView(game);
     }
