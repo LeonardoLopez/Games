@@ -1,4 +1,4 @@
-package com.example.leonardolopez.games;
+package com.example.leonardolopez.games.models;
 
 import android.graphics.Rect;
 import android.graphics.Matrix;

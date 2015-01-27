@@ -1,4 +1,4 @@
-package com.example.leonardolopez.games;
+package com.example.leonardolopez.games.states;
 
 import sheep.game.State;
 import sheep.graphics.Font;
@@ -7,6 +7,10 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.*;
 import android.view.MotionEvent;
+
+import com.example.leonardolopez.games.R;
+import com.example.leonardolopez.games.models.HeliModel;
+
 import sheep.input.TouchListener;
 
 

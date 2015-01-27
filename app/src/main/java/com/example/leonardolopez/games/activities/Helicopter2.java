@@ -1,5 +1,6 @@
-package com.example.leonardolopez.games;
+package com.example.leonardolopez.games.activities;
 
+import com.example.leonardolopez.games.R;
 import com.example.leonardolopez.games.util.SystemUiHider;
 
 import android.annotation.TargetApi;
@@ -19,7 +20,7 @@ import android.support.v4.app.NavUtils;
  *
  * @see SystemUiHider
  */
-public class Pong extends Activity {
+public class Helicopter2 extends Activity {
     /**
      * Whether or not the system UI should be auto-hidden after
      * {@link #AUTO_HIDE_DELAY_MILLIS} milliseconds.
@@ -52,7 +53,7 @@ public class Pong extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_pong);
+        setContentView(R.layout.activity_helicopter2);
         setupActionBar();
 
         final View controlsView = findViewById(R.id.fullscreen_content_controls);

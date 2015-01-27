@@ -1,10 +1,14 @@
-package com.example.leonardolopez.games;
+package com.example.leonardolopez.games.activities;
 
-import sheep.game.Game;
+import com.example.leonardolopez.games.states.Heli3State;
+
 import android.app.Activity;
 import android.os.Bundle;
 
-public class Helicopter1 extends Activity {
+import sheep.game.Game;
+
+
+public class Helicopter3 extends Activity {
 
 
     public void onCreate(Bundle savedInstanceState) {
@@ -13,7 +17,7 @@ public class Helicopter1 extends Activity {
         // Create the game.
         Game game = new Game(this, null);
         // Push the main state.
-        game.pushState(new Heli1());
+        game.pushState(new Heli3State(game.getResources(), this.getBaseContext()));
         // View the game.
         setContentView(game);
     }

@@ -1,6 +1,8 @@
-package com.example.leonardolopez.games;
+package com.example.leonardolopez.games.states;
 
 import android.os.Bundle;
+
+import com.example.leonardolopez.games.R;
 
 import sheep.game.Sprite;
 import sheep.game.State;
