@@ -38,9 +38,9 @@ public class Heli3State extends State implements TouchListener{
         this.scrnW= context.getResources().getDisplayMetrics().widthPixels;
         this.scrnH= context.getResources().getDisplayMetrics().heightPixels;
 
-        heli1 = new HeliModel(BitmapFactory.decodeResource(resources, R.drawable.helisprite),0,0,100,4);
-        heli2 = new HeliModel(BitmapFactory.decodeResource(resources, R.drawable.helisprite),300,400,100,4);
-        heli3 = new HeliModel(BitmapFactory.decodeResource(resources, R.drawable.helisprite),300,100,100,4);
+        heli1 = new HeliModel(BitmapFactory.decodeResource(resources, R.drawable.helisprite),0,200,100,4);
+        heli2 = new HeliModel(BitmapFactory.decodeResource(resources, R.drawable.helisprite),300,200,100,4);
+        heli3 = new HeliModel(BitmapFactory.decodeResource(resources, R.drawable.helisprite),700,500,100,4);
 
         heli1.setSpeed(1000, -1000);
         heli2.setSpeed(-1000, 1000);
@@ -60,9 +60,9 @@ public class Heli3State extends State implements TouchListener{
         heli2.draw(canvas);
         heli3.draw(canvas);
         Font font = new Font(0, 55, 20, 30, Typeface.SERIF, Typeface.NORMAL);
-        canvas.drawText("Helicopter 1 Position (X:" + heli1.getX() + ", Y:" + heli1.getY() +")", 30, this.scrnH-90, font);
-        canvas.drawText("Helicopter 2 Position (X:" + heli2.getX() + ", Y:" + heli2.getY() +")", 30, this.scrnH-60, font);
-        canvas.drawText("Helicopter 3 Position (X:" + heli3.getX() + ", Y:" + heli3.getY() +")", 30, this.scrnH-30, font);
+        canvas.drawText("Helicopter 1 Position (X:" + heli1.getX() + ", Y:" + heli1.getY() +")", 30, this.scrnH-160, font);
+        canvas.drawText("Helicopter 2 Position (X:" + heli2.getX() + ", Y:" + heli2.getY() +")", 30, this.scrnH-130, font);
+        canvas.drawText("Helicopter 3 Position (X:" + heli3.getX() + ", Y:" + heli3.getY() +")", 30, this.scrnH-100, font);
     }
 
     @Override
