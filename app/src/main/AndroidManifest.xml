@@ -56,14 +56,6 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.leonardolopez.games.MainActivity" />
         </activity>
-        <activity
-            android:name=".Heli1"
-            android:label="@string/title_activity_heli1"
-            android:parentActivityName=".MainActivity" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.leonardolopez.games.MainActivity" />
-        </activity>
     </application>
 
 </manifest>
