@@ -1,16 +1,19 @@
 package com.example.leonardolopez.games;
 
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.Matrix;
 import android.graphics.Rect;
-import android.graphics.drawable.BitmapDrawable;
+import android.graphics.Matrix;
+
 import android.util.DisplayMetrics;
+import android.graphics.Canvas;
+import android.graphics.drawable.BitmapDrawable;
+
 import sheep.game.Sprite;
+import android.graphics.Bitmap;
 
-public class Heli3 extends Sprite {
 
-    private Bitmap bitmap;      // the animation sequence
+public class HeliModel extends Sprite {
+
+    private Bitmap bm;      // the animation sequence
     private Rect sourceRect;    // the rectangle to be drawn from the animation bitmap
     private int frameNr;        // number of frames in animation
     private int currentFrame;   // the current frame
@@ -22,8 +25,8 @@ public class Heli3 extends Sprite {
     private float y;
 
 
-    public Heli3(Bitmap bitmap, float x, float y, int fps, int frameCount){
-        this.bitmap = bitmap;
+    public HeliModel(Bitmap bitmap, float x, float y, int fps, int frameCount){
+        this.bm = bitmap;
         this.x = x;
         this.y = y;
         currentFrame = 0;
@@ -37,36 +40,21 @@ public class Heli3 extends Sprite {
         //this.setShape(spriteWidth, spriteHeight);
     }
 
-    public void update(long gameTime) {
-        if (gameTime > frameTicker + framePeriod) {
-            frameTicker = gameTime;
-            // increment the frame
-            currentFrame++;
-            if (currentFrame >= frameNr) {
-                currentFrame = 0;
-            }
-        }
-        // define the rectangle to cut out sprite
-        this.sourceRect.left = currentFrame * spriteWidth;
-        this.sourceRect.right = this.sourceRect.left + spriteWidth;
-
-    }
-
     @Override
     public void draw(Canvas canvas) {
         setX(getX() + getSpeed().getX()/100);
         setY(getY() + getSpeed().getY()/100);
 
         Rect destRect = new Rect((int)x, (int)y, (int)x + spriteWidth, (int)y + spriteHeight);
-        canvas.drawBitmap(bitmap, sourceRect, destRect, null);
+        canvas.drawBitmap(this.bm, sourceRect, destRect, null);
     }
 
     public void flipHelicopter(){
         Matrix mirrorMatrix = new Matrix();
         mirrorMatrix.preScale(-1, 1);
-        Bitmap turnMap = Bitmap.createBitmap(bitmap, 0, 0, bitmap.getWidth(), bitmap.getHeight(), mirrorMatrix, false);
+        Bitmap turnMap = Bitmap.createBitmap(this.bm, 0, 0, this.bm.getWidth(), this.bm.getHeight(), mirrorMatrix, false);
         turnMap.setDensity(DisplayMetrics.DENSITY_DEFAULT);
-        bitmap = new BitmapDrawable(turnMap).getBitmap();
+        this.bm = new BitmapDrawable(turnMap).getBitmap();
     }
 
 
@@ -79,6 +67,24 @@ public class Heli3 extends Sprite {
     public float getY(){return y;}
     public int getHelicopterHeight(){return spriteHeight;}
     public int getHelicopterWidth(){return spriteWidth;}
+
+
+
     public Rect getSpriteRect(){
-        return new Rect((int)getX(), (int)getY(), (int)getX() + spriteWidth, (int)getY() + spriteHeight);}
+        return new Rect((int)getX(), (int)getY(), (int)getX() + spriteWidth, (int)getY() + spriteHeight);
+    }
+
+
+    public void update(long gameTime) {
+        if (gameTime > frameTicker + framePeriod) {
+            frameTicker = gameTime;
+            currentFrame++;
+            if (currentFrame >= frameNr) {
+                currentFrame = 0;
+            }
+        }
+        this.sourceRect.left = currentFrame * spriteWidth;
+        this.sourceRect.right = this.sourceRect.left + spriteWidth;
+    }
+
 }
