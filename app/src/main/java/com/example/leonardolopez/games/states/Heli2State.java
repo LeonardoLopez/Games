@@ -36,7 +36,7 @@ public class Heli2State extends State implements TouchListener{
         this.scrnW= context.getResources().getDisplayMetrics().widthPixels;
         this.scrnH= context.getResources().getDisplayMetrics().heightPixels;
 
-        heli1 = new HeliModel(BitmapFactory.decodeResource(resources, R.drawable.helisprite),0,200,100,4);
+        heli1 = new HeliModel(BitmapFactory.decodeResource(resources, R.drawable.heli1totheleft),0,200,100,1);
         heli1.setSpeed(1000, -1000);
         heli1.update(System.currentTimeMillis());
     }
