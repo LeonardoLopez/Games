@@ -5,10 +5,12 @@ import android.content.res.Resources;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.view.MotionEvent;
 import com.example.leonardolopez.games.R;
 import com.example.leonardolopez.games.models.HeliModel;
 import sheep.game.State;
+import sheep.graphics.Font;
 import sheep.input.TouchListener;
 
 public class Heli2State extends State implements TouchListener{
@@ -41,12 +43,14 @@ public class Heli2State extends State implements TouchListener{
 
     @Override
     public void draw(Canvas canvas) {
-        canvasHeight = canvas.getHeight();
-        canvasWidth = canvas.getWidth();
-        canvas.drawColor(Color.BLACK);
-        heli1.draw(canvas);
-        //Font font = new Font(0, 55, 20, 30, Typeface.SERIF, Typeface.NORMAL);
-        //canvas.drawText("Helicopter 1 Position (X:" + heli1.getX() + ", Y:" + heli1.getY() +")", 30, this.scrnH-160, font);
+        if(null != canvas){
+            canvasHeight = canvas.getHeight();
+            canvasWidth = canvas.getWidth();
+            canvas.drawColor(Color.BLACK);
+            heli1.draw(canvas);
+            Font font = new Font(0, 55, 20, 30, Typeface.SERIF, Typeface.NORMAL);
+            canvas.drawText("Helicopter 1 Position (X:" + heli1.getX() + ", Y:" + heli1.getY() +")", 30, this.scrnH-160, font);
+        }
     }
 
     @Override

@@ -28,12 +28,14 @@ public class Heli1State extends State {
 
     @Override
     public void draw(Canvas canvas) {
-        canvasHeight = canvas.getHeight();
-        canvasWidth = canvas.getWidth();
-        canvas.drawColor(Color.BLACK);
-        heli1.draw(canvas);
-        //Font font = new Font(0, 55, 20, 30, Typeface.SERIF, Typeface.NORMAL);
-        //canvas.drawText("Helicopter 1 Position (X:" + heli1.getX() + ", Y:" + heli1.getY() +")", 30, this.scrnH-160, font);
+        if(null != canvas) {
+            canvasHeight = canvas.getHeight();
+            canvasWidth = canvas.getWidth();
+            canvas.drawColor(Color.BLACK);
+            heli1.draw(canvas);
+            //Font font = new Font(0, 55, 20, 30, Typeface.SERIF, Typeface.NORMAL);
+            //canvas.drawText("Helicopter 1 Position (X:" + heli1.getX() + ", Y:" + heli1.getY() +")", 30, this.scrnH-160, font);
+        }
     }
 
     @Override
