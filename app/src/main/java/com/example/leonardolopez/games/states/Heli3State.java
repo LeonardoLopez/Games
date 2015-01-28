@@ -23,8 +23,6 @@ public class Heli3State extends State implements TouchListener{
     private int scrnW;
     private int scrnH;
 
-
-
     @Override
     public boolean onTouchMove(MotionEvent event) {
         heli1.setPosition(event.getX(), event.getY());
