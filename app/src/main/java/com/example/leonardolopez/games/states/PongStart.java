@@ -43,7 +43,7 @@ public class PongStart extends State implements TouchListener {
         this.scrnH= context.getResources().getDisplayMetrics().heightPixels;
         ballImage = new Image(R.drawable.ball);
         ball = new Sprite(ballImage);
-        ball.setPosition(0, 200);
+        ball.setPosition(this.scrnW/2, this.scrnH/2);
 
     }
 
@@ -52,6 +52,7 @@ public class PongStart extends State implements TouchListener {
         if(null!=canvas) {
             canvas.drawColor(Color.BLACK);
             canvas.drawText("Tap to start" + this.scrnH + " " + this.scrnW, canvas.getWidth() / 2, 200, font);
+            ball.draw(canvas);
         }
 
     }
