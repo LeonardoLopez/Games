@@ -21,8 +21,8 @@ public class PongOver extends State implements TouchListener {
 
     public PongOver(int winner, Resources resources, Context context){
         this.winner = winner;
-        font = new Font(88, 88, 88, 50, Typeface.SERIF, Typeface.BOLD);
-        font2 = new Font(100, 100, 100, 30, Typeface.SERIF, Typeface.NORMAL);
+        font = new Font(255, 255, 255, 50, Typeface.SERIF, Typeface.BOLD);
+        font2 = new Font(255, 255, 255, 30, Typeface.SERIF, Typeface.NORMAL);
         font.setTextAlign(Paint.Align.CENTER);
         font2.setTextAlign(Paint.Align.CENTER);
         this.res = resources;

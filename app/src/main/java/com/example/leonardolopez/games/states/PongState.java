@@ -8,6 +8,9 @@ import android.graphics.Typeface;
 import android.util.Log;
 import android.view.MotionEvent;
 import com.example.leonardolopez.games.R;
+
+import java.util.Random;
+
 import sheep.game.Sprite;
 import sheep.game.State;
 import sheep.graphics.Font;
@@ -28,8 +31,7 @@ public class PongState extends State implements TouchListener {
     private int scrnH;
 
     public PongState(Resources res, Context con) {
-
-        font = new Font(0, 55, 20, 50, Typeface.SERIF, Typeface.NORMAL);
+        font = new Font(255, 255, 255, 100, Typeface.SERIF, Typeface.NORMAL);
         this.resources = res;
         this.context = con;
 
@@ -38,7 +40,7 @@ public class PongState extends State implements TouchListener {
 
         paddle1count = 0;
         paddle2count = 0;
-        paddleImage1 = new Image(R.drawable.paddlef1 );
+        paddleImage1 = new Image(R.drawable.paddlef1);
         paddleImage2 = new Image(R.drawable.paddlef2);
         ballImage = new Image(R.drawable.ball);
 
@@ -46,13 +48,21 @@ public class PongState extends State implements TouchListener {
         paddle2 = new Sprite(paddleImage2);
         ball = new Sprite(ballImage);
 
-        paddle1.setPosition(this.scrnH/2-200, 30);
-        paddle2.setPosition(this.scrnH/2-200, 30);
-        ball.setPosition(250, 200);
-        ball.setSpeed(250, 170);
+        paddle1.setPosition(30, this.scrnH/2);
+        paddle2.setPosition(this.scrnW-30, this.scrnH/2);
+        ball.setPosition(this.scrnW/2, this.scrnH/2);
+        setRandomSpeed(ball);
+
+        ball.update(System.currentTimeMillis());
+        paddle1.update(System.currentTimeMillis());
+        paddle2.update(System.currentTimeMillis());
     }
 
-
+    private void setRandomSpeed(Sprite ball){
+        float vy = (int)(Math.random()*400)+1;
+        float vx = 400;
+        ball.setSpeed(vx,vy);
+    }
 
     @Override
     public boolean onTouchMove(MotionEvent event) {
@@ -65,73 +75,70 @@ public class PongState extends State implements TouchListener {
             paddle2.setPosition(paddle2.getX(), event.getY());
             return true;
         }
-
         return false;
     }
 
 
-
     @Override
     public void update(float dt) {
-        ball.update(dt);
-        paddle1.update(dt);
-        paddle2.update(dt);
 
-        if(paddle1count==2){
+        if(paddle1count==5){
             getGame().popState();
             getGame().pushState(new PongOver(1, resources, context));
         }
-        if(paddle2count==2){
+        if(paddle2count==5){
             getGame().popState();
             getGame().pushState(new PongOver(2, resources, context));
         }
 
-        if(ball.getX()>(canvasWidth-ballImage.getWidth()) || ball.getX()<0)
-        {
-            ball.setSpeed(-ball.getSpeed().getX(), ball.getSpeed().getY());
-
-        }
-        if(ball.getY()>(canvasHeight-ballImage.getHeight()) || ball.getY()<0)
-        {
-            ball.setSpeed(ball.getSpeed().getX(), -ball.getSpeed().getY());
-        }
-
         if(ball.collides(paddle1)){
-            ball.setSpeed(ball.getSpeed().getX(), -ball.getSpeed().getY());
+            ball.setSpeed(-ball.getSpeed().getX()+30, ball.getSpeed().getY()+30);
         }
         if(ball.collides(paddle2)){
+            ball.setSpeed(-ball.getSpeed().getX()+30, ball.getSpeed().getY()+30);
+        }
+
+        if(ball.getY()<(this.scrnH*0.1)){
+            ball.setSpeed(ball.getSpeed().getX(), -ball.getSpeed().getY());
+        }
+        if(ball.getY()>(this.scrnH-5)){
             ball.setSpeed(ball.getSpeed().getX(), -ball.getSpeed().getY());
         }
 
-        if(ball.getY()<paddle1.getY()){
-            ball.setPosition(canvasHeight/2, canvasWidth/2);
-            paddle1count++;
+        if(ball.getX()<paddle1.getX()){
+            ball.setPosition(this.scrnW/2, this.scrnH/2);
+            setRandomSpeed(ball);
+            paddle2count++;
             Log.w("GameState", "One point for paddle2: " + paddle2count);
         }
-        if(ball.getY()>paddle2.getY()){
-            ball.setPosition(canvasHeight/2, canvasWidth/2);
-            paddle2count++;
+        if(ball.getX()>paddle2.getX()){
+            ball.setPosition(this.scrnW/2, this.scrnH/2);
+            setRandomSpeed(ball);
+            paddle1count++;
             Log.w("GameState", "One point for paddle1: " + paddle1count);
         }
 
-
-
+        ball.update(dt);
+        paddle1.update(dt);
+        paddle2.update(dt);
     }
+
 
     @Override
     public void draw(Canvas canvas) {
-        canvasHeight = canvas.getHeight();
-        canvasWidth = canvas.getWidth();
-        canvas.drawColor(Color.WHITE);
+        if (canvas!=null) {
+            canvasHeight = canvas.getHeight();
+            canvasWidth = canvas.getWidth();
+            canvas.drawColor(Color.BLACK);
 
-        canvas.drawText("" + paddle2count, 40, 310, font); //add
-        canvas.drawText("" + paddle1count, 390, 400, font);
-        canvas.drawRect(0, 338, 480, 342, sheep.graphics.Color.RED);
+            canvas.drawText("" + paddle2count, (this.scrnW / 2) + 30, this.scrnH - 100, font);
+            canvas.drawText("" + (paddle1count-1), (this.scrnW / 2) - 60, 100, font);
+            canvas.drawLine(this.scrnW / 2, 0, this.scrnW / 2, this.scrnH, sheep.graphics.Color.WHITE);
 
-        ball.draw(canvas);
-        paddle1.draw(canvas);
-        paddle2.draw(canvas);
-
+            ball.draw(canvas);
+            paddle1.draw(canvas);
+            paddle2.draw(canvas);
+        }
     }
 
 }
