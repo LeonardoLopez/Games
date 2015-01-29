@@ -42,7 +42,7 @@ public class Heli3State extends State implements TouchListener{
 
         heli1 = new HeliModel(BitmapFactory.decodeResource(resources, R.drawable.helisprite),0,200,100,4);
         heli2 = new HeliModel(BitmapFactory.decodeResource(resources, R.drawable.helisprite),300,200,100,4);
-        heli3 = new HeliModel(BitmapFactory.decodeResource(resources, R.drawable.helisprite),700,500,100,4);
+        heli3 = new HeliModel(BitmapFactory.decodeResource(resources, R.drawable.helisprite),700,400,100,4);
 
         heli1.setSpeed(1000, -1000);
         heli2.setSpeed(-1000, 1000);
