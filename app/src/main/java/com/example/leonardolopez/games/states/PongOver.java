@@ -7,7 +7,6 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Typeface;
 import android.view.MotionEvent;
-
 import sheep.game.State;
 import sheep.graphics.Font;
 import sheep.input.TouchListener;
@@ -41,7 +40,6 @@ public class PongOver extends State implements TouchListener {
 
     @Override
     public boolean onTouchUp(MotionEvent event) {
-
         getGame().popState();
         getGame().pushState(new PongState(res, ctx));
         return true;

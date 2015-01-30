@@ -61,7 +61,11 @@ public class PongState extends State implements TouchListener {
     private void setRandomSpeed(Sprite ball){
         float vy = (int)(Math.random()*400)+1;
         float vx = 400;
-        ball.setSpeed(vx,vy);
+        int direction = (int)(Math.random()*3);
+        if (direction==0) {ball.setSpeed(vx,vy);}
+        if (direction==1) {ball.setSpeed(-vx,vy);}
+        if (direction==2) {ball.setSpeed(vx,-vy);}
+        if (direction==3) {ball.setSpeed(-vx,-vy);}
     }
 
     @Override
@@ -92,17 +96,14 @@ public class PongState extends State implements TouchListener {
         }
 
         if(ball.collides(paddle1)){
-            ball.setSpeed(-ball.getSpeed().getX()+30, ball.getSpeed().getY()+30);
+            ball.setSpeed(-(ball.getSpeed().getX()+30), ball.getSpeed().getY()+30);
         }
         if(ball.collides(paddle2)){
-            ball.setSpeed(-ball.getSpeed().getX()+30, ball.getSpeed().getY()+30);
+            ball.setSpeed(-(ball.getSpeed().getX()+30), ball.getSpeed().getY()+30);
         }
 
-        if(ball.getY()<(this.scrnH*0.1)){
-            ball.setSpeed(ball.getSpeed().getX(), -ball.getSpeed().getY());
-        }
-        if(ball.getY()>(this.scrnH-5)){
-            ball.setSpeed(ball.getSpeed().getX(), -ball.getSpeed().getY());
+        if(ball.getY()>(canvasHeight) || ball.getY()<30){  //20 is the ball's height
+            ball.setSpeed(ball.getSpeed().getX()+10, -(ball.getSpeed().getY()+10));
         }
 
         if(ball.getX()<paddle1.getX()){

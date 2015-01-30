@@ -36,7 +36,7 @@ public class PongStart extends State implements TouchListener {
         this.scrnH= context.getResources().getDisplayMetrics().heightPixels;
         ballImage = new Image(R.drawable.ball);
         ball = new Sprite(ballImage);
-        ball.setPosition(this.scrnW/2, (this.scrnH/2)+100);
+        ball.setPosition((this.scrnW/2), (this.scrnH/2));
         ball.update(System.currentTimeMillis());
 
     }
