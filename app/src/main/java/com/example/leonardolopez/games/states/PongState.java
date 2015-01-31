@@ -82,7 +82,6 @@ public class PongState extends State implements TouchListener {
         return false;
     }
 
-
     @Override
     public void update(float dt) {
 
