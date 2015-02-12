@@ -1,19 +1,25 @@
-package com.example.leonardolopez.games.activities;
+package com.example.leonardolopez.games.view;
 
-import com.example.leonardolopez.games.states.Heli2State;
+import com.example.leonardolopez.games.presenter.Heli3State;
+
 import android.app.Activity;
 import android.os.Bundle;
+
 import sheep.game.Game;
 
-public class Helicopter2 extends Activity {
+
+public class Helicopter3 extends Activity {
+
 
     public void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         // Create the game.
         Game game = new Game(this, null);
         // Push the main state.
-        game.pushState(new Heli2State(game.getResources(), this.getBaseContext()));
+        game.pushState(new Heli3State(game.getResources(), this.getBaseContext()));
         // View the game.
         setContentView(game);
     }
+
 }

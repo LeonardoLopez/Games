@@ -1,12 +1,10 @@
-package com.example.leonardolopez.games.states;
+package com.example.leonardolopez.games.presenter;
 
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Canvas;
 import android.graphics.Color;
-import android.graphics.DashPathEffect;
 import android.graphics.Paint;
-import android.graphics.Path;
 import android.graphics.Typeface;
 import android.view.MotionEvent;
 import com.example.leonardolopez.games.R;

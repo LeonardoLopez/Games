@@ -1,4 +1,4 @@
-package com.example.leonardolopez.games.activities;
+package com.example.leonardolopez.games.view;
 
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;

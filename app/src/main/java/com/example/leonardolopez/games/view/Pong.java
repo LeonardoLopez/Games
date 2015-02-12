@@ -1,10 +1,10 @@
-package com.example.leonardolopez.games.activities;
+package com.example.leonardolopez.games.view;
 
 
 import android.app.Activity;
 import android.os.Bundle;
 
-import com.example.leonardolopez.games.states.PongStart;
+import com.example.leonardolopez.games.presenter.PongStart;
 import sheep.game.Game;
 
 

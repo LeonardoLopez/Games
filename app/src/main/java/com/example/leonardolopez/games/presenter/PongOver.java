@@ -1,4 +1,4 @@
-package com.example.leonardolopez.games.states;
+package com.example.leonardolopez.games.presenter;
 
 import android.content.Context;
 import android.content.res.Resources;

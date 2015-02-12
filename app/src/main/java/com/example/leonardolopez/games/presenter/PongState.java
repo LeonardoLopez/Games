@@ -1,15 +1,16 @@
-package com.example.leonardolopez.games.states;
+package com.example.leonardolopez.games.presenter;
 
 import android.content.Context;
 import android.content.res.Resources;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.util.Log;
 import android.view.MotionEvent;
 import com.example.leonardolopez.games.R;
-
-import java.util.Random;
+import com.example.leonardolopez.games.model.Helicopter;
+import com.example.leonardolopez.games.model.PongBall;
 
 import sheep.game.Sprite;
 import sheep.game.State;
@@ -42,6 +43,7 @@ public class PongState extends State implements TouchListener {
         paddle2count = 0;
         paddleImage1 = new Image(R.drawable.paddlef1);
         paddleImage2 = new Image(R.drawable.paddlef2);
+        //ball = new PongBall(BitmapFactory.decodeResource(resources, R.drawable.ball),200,200,100,1);
         ballImage = new Image(R.drawable.ball);
 
         paddle1 = new Sprite(paddleImage1);

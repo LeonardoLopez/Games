@@ -1,4 +1,4 @@
-package com.example.leonardolopez.games.models;
+package com.example.leonardolopez.games.model;
 
 import android.graphics.Rect;
 import android.graphics.Matrix;
@@ -11,7 +11,7 @@ import sheep.game.Sprite;
 import android.graphics.Bitmap;
 
 
-public class HeliModel extends Sprite {
+public class Helicopter extends Sprite {
 
     private Bitmap bm;      // the animation sequence
     private Rect sourceRect;    // the rectangle to be drawn from the animation bitmap
@@ -25,7 +25,7 @@ public class HeliModel extends Sprite {
     private float y;
 
 
-    public HeliModel(Bitmap bitmap, float x, float y, int fps, int frameCount){
+    public Helicopter(Bitmap bitmap, float x, float y, int fps, int frameCount){
         this.bm = bitmap;
         this.x = x;
         this.y = y;

@@ -8,7 +8,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name=".activities.MainActivity"
+            android:name=".view.MainActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -17,44 +17,44 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activities.Helicopter1"
+            android:name=".view.Helicopter1"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/title_activity_helicopter1"
-            android:parentActivityName=".activities.MainActivity"
+            android:parentActivityName=".view.MainActivity"
             android:theme="@style/FullscreenTheme" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".activities.MainActivity" />
+                android:value=".view.MainActivity" />
         </activity>
         <activity
-            android:name=".activities.Helicopter2"
+            android:name=".view.Helicopter2"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/title_activity_helicopter2"
-            android:parentActivityName=".activities.MainActivity"
+            android:parentActivityName=".view.MainActivity"
             android:theme="@style/FullscreenTheme" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".activities.MainActivity" />
+                android:value=".view.MainActivity" />
         </activity>
         <activity
-            android:name=".activities.Helicopter3"
+            android:name=".view.Helicopter3"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/title_activity_helicopter3"
-            android:parentActivityName=".activities.MainActivity"
+            android:parentActivityName=".view.MainActivity"
             android:theme="@style/FullscreenTheme" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".activities.MainActivity" />
+                android:value=".view.MainActivity" />
         </activity>
         <activity
-            android:name=".activities.Pong"
+            android:name=".view.Pong"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/title_activity_pong"
-            android:parentActivityName=".activities.MainActivity"
+            android:parentActivityName=".view.MainActivity"
             android:theme="@style/FullscreenTheme" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".activities.MainActivity" />
+                android:value=".view.MainActivity" />
         </activity>
     </application>
 

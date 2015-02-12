@@ -1,4 +1,4 @@
-package com.example.leonardolopez.games.states;
+package com.example.leonardolopez.games.presenter;
 
 import sheep.game.State;
 import sheep.graphics.Font;
@@ -9,16 +9,16 @@ import android.graphics.*;
 import android.view.MotionEvent;
 
 import com.example.leonardolopez.games.R;
-import com.example.leonardolopez.games.models.HeliModel;
+import com.example.leonardolopez.games.model.Helicopter;
 
 import sheep.input.TouchListener;
 
 
 public class Heli3State extends State implements TouchListener{
 
-    private HeliModel heli1;
-    private HeliModel heli2;
-    private HeliModel heli3;
+    private Helicopter heli1;
+    private Helicopter heli2;
+    private Helicopter heli3;
     private int canvasHeight, canvasWidth;
     private int scrnW;
     private int scrnH;
@@ -40,9 +40,9 @@ public class Heli3State extends State implements TouchListener{
         this.scrnW= context.getResources().getDisplayMetrics().widthPixels;
         this.scrnH= context.getResources().getDisplayMetrics().heightPixels;
 
-        heli1 = new HeliModel(BitmapFactory.decodeResource(resources, R.drawable.helisprite),0,200,100,4);
-        heli2 = new HeliModel(BitmapFactory.decodeResource(resources, R.drawable.helisprite),300,200,100,4);
-        heli3 = new HeliModel(BitmapFactory.decodeResource(resources, R.drawable.helisprite),700,400,100,4);
+        heli1 = new Helicopter(BitmapFactory.decodeResource(resources, R.drawable.helisprite),0,200,100,4);
+        heli2 = new Helicopter(BitmapFactory.decodeResource(resources, R.drawable.helisprite),300,200,100,4);
+        heli3 = new Helicopter(BitmapFactory.decodeResource(resources, R.drawable.helisprite),700,400,100,4);
 
         heli1.setSpeed(1000, -1000);
         heli2.setSpeed(-1000, 1000);
