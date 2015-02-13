@@ -11,6 +11,7 @@ import android.view.MotionEvent;
 import com.example.leonardolopez.games.R;
 import com.example.leonardolopez.games.model.Helicopter;
 import com.example.leonardolopez.games.model.PongBall;
+import com.example.leonardolopez.games.model.PongPaddle;
 
 import sheep.game.Sprite;
 import sheep.game.State;
@@ -22,7 +23,7 @@ import sheep.input.TouchListener;
 public class PongState extends State implements TouchListener {
 
     private int canvasHeight, canvasWidth;
-    private Sprite paddle1, paddle2, ball;
+    //private Sprite paddle1, paddle2, ball;
     private Image paddleImage1, paddleImage2, ballImage;
     private int paddle1count, paddle2count;
     private Font font;
@@ -30,6 +31,8 @@ public class PongState extends State implements TouchListener {
     private Context context;
     private int scrnW;
     private int scrnH;
+    private PongBall ball;
+    private PongPaddle paddle1,paddle2;
 
     public PongState(Resources res, Context con) {
         font = new Font(255, 255, 255, 100, Typeface.SERIF, Typeface.NORMAL);
@@ -41,33 +44,30 @@ public class PongState extends State implements TouchListener {
 
         paddle1count = 0;
         paddle2count = 0;
-        paddleImage1 = new Image(R.drawable.paddlef1);
+
+        ball = new PongBall(BitmapFactory.decodeResource(resources, R.drawable.ball),this.scrnW/2-30, this.scrnH/2,100,1);
+        paddle1 = new PongPaddle(BitmapFactory.decodeResource(resources, R.drawable.paddlef1),30, this.scrnH/2-60,100,1);
+        paddle2 = new PongPaddle(BitmapFactory.decodeResource(resources, R.drawable.paddlef2),this.scrnW-60, this.scrnH/2-60,100,1);
+
+        /*paddleImage1 = new Image(R.drawable.paddlef1);
         paddleImage2 = new Image(R.drawable.paddlef2);
-        //ball = new PongBall(BitmapFactory.decodeResource(resources, R.drawable.ball),200,200,100,1);
         ballImage = new Image(R.drawable.ball);
 
         paddle1 = new Sprite(paddleImage1);
         paddle2 = new Sprite(paddleImage2);
-        ball = new Sprite(ballImage);
+        ball = new Sprite(ballImage);*/
 
-        paddle1.setPosition(30, this.scrnH/2);
-        paddle2.setPosition(this.scrnW-30, this.scrnH/2);
-        ball.setPosition(this.scrnW/2, this.scrnH/2);
-        setRandomSpeed(ball);
+
+        //paddle1.setPosition(30, this.scrnH/2);
+        //paddle2.setPosition(this.scrnW-30, this.scrnH/2);
+        //ball.setPosition(this.scrnW/2, this.scrnH/2);
+        //setRandomSpeed(ball);
+        ball.setRandomSpeed();
 
         ball.update(System.currentTimeMillis());
         paddle1.update(System.currentTimeMillis());
         paddle2.update(System.currentTimeMillis());
-    }
 
-    private void setRandomSpeed(Sprite ball){
-        float vy = (int)(Math.random()*400)+1;
-        float vx = 400;
-        int direction = (int)(Math.random()*3);
-        if (direction==0) {ball.setSpeed(vx,vy);}
-        if (direction==1) {ball.setSpeed(-vx,vy);}
-        if (direction==2) {ball.setSpeed(vx,-vy);}
-        if (direction==3) {ball.setSpeed(-vx,-vy);}
     }
 
     @Override
@@ -109,13 +109,13 @@ public class PongState extends State implements TouchListener {
 
         if(ball.getX()<paddle1.getX()){
             ball.setPosition(this.scrnW/2, this.scrnH/2);
-            setRandomSpeed(ball);
+            ball.setRandomSpeed();
             paddle2count++;
             Log.w("GameState", "One point for paddle2: " + paddle2count);
         }
         if(ball.getX()>paddle2.getX()){
             ball.setPosition(this.scrnW/2, this.scrnH/2);
-            setRandomSpeed(ball);
+            ball.setRandomSpeed();
             paddle1count++;
             Log.w("GameState", "One point for paddle1: " + paddle1count);
         }
@@ -134,7 +134,7 @@ public class PongState extends State implements TouchListener {
             canvas.drawColor(Color.BLACK);
 
             canvas.drawText("" + paddle2count, (this.scrnW / 2) + 30, this.scrnH - 100, font);
-            canvas.drawText("" + (paddle1count-1), (this.scrnW / 2) - 60, 100, font);
+            canvas.drawText("" + (paddle1count), (this.scrnW / 2) - 60, 100, font);
             canvas.drawLine(this.scrnW / 2, 0, this.scrnW / 2, this.scrnH, sheep.graphics.Color.WHITE);
 
             ball.draw(canvas);

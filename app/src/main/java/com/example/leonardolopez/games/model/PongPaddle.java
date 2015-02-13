@@ -2,11 +2,9 @@ package com.example.leonardolopez.games.model;
 
 import android.graphics.Rect;
 import android.graphics.Matrix;
-
 import android.util.DisplayMetrics;
 import android.graphics.Canvas;
 import android.graphics.drawable.BitmapDrawable;
-
 import sheep.game.Sprite;
 import android.graphics.Bitmap;
 
@@ -36,25 +34,16 @@ public class PongPaddle extends Sprite {
         sourceRect = new Rect(0, 0, spriteWidth, spriteHeight);
         framePeriod = 1000/fps;
         frameTicker = 0l;
-        flipHelicopter();
         //this.setShape(spriteWidth, spriteHeight);
     }
 
     @Override
     public void draw(Canvas canvas) {
-        setX(getX() + getSpeed().getX()/100);
-        setY(getY() + getSpeed().getY()/100);
+        /*setX(getX() + getSpeed().getX()/100);
+        setY(getY() + getSpeed().getY()/100);*/
 
         Rect destRect = new Rect((int)x, (int)y, (int)x + spriteWidth, (int)y + spriteHeight);
         canvas.drawBitmap(this.bm, sourceRect, destRect, null);
-    }
-
-    public void flipHelicopter(){
-        Matrix mirrorMatrix = new Matrix();
-        mirrorMatrix.preScale(-1, 1);
-        Bitmap turnMap = Bitmap.createBitmap(this.bm, 0, 0, this.bm.getWidth(), this.bm.getHeight(), mirrorMatrix, false);
-        turnMap.setDensity(DisplayMetrics.DENSITY_DEFAULT);
-        this.bm = new BitmapDrawable(turnMap).getBitmap();
     }
 
 
@@ -65,8 +54,8 @@ public class PongPaddle extends Sprite {
     public void setPosition(float x, float y){this.x = x;this.y = y;}
     public float getX(){return x;}
     public float getY(){return y;}
-    public int getHelicopterHeight(){return spriteHeight;}
-    public int getHelicopterWidth(){return spriteWidth;}
+    public int getSpriteHeight(){return spriteHeight;}
+    public int getSpriteWidth(){return spriteWidth;}
 
 
 
@@ -86,5 +75,6 @@ public class PongPaddle extends Sprite {
         this.sourceRect.left = currentFrame * spriteWidth;
         this.sourceRect.right = this.sourceRect.left + spriteWidth;
     }
+
 
 }

@@ -2,11 +2,9 @@ package com.example.leonardolopez.games.model;
 
 import android.graphics.Rect;
 import android.graphics.Matrix;
-
 import android.util.DisplayMetrics;
 import android.graphics.Canvas;
 import android.graphics.drawable.BitmapDrawable;
-
 import sheep.game.Sprite;
 import android.graphics.Bitmap;
 
