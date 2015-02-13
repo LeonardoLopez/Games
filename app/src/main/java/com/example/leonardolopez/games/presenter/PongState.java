@@ -9,22 +9,17 @@ import android.graphics.Typeface;
 import android.util.Log;
 import android.view.MotionEvent;
 import com.example.leonardolopez.games.R;
-import com.example.leonardolopez.games.model.Helicopter;
 import com.example.leonardolopez.games.model.PongBall;
 import com.example.leonardolopez.games.model.PongPaddle;
-
 import sheep.game.Sprite;
 import sheep.game.State;
 import sheep.graphics.Font;
-import sheep.graphics.Image;
 import sheep.input.TouchListener;
 
 
 public class PongState extends State implements TouchListener {
 
     private int canvasHeight, canvasWidth;
-    //private Sprite paddle1, paddle2, ball;
-    private Image paddleImage1, paddleImage2, ballImage;
     private int paddle1count, paddle2count;
     private Font font;
     private Resources resources;
@@ -49,18 +44,6 @@ public class PongState extends State implements TouchListener {
         paddle1 = new PongPaddle(BitmapFactory.decodeResource(resources, R.drawable.paddlef1),30, this.scrnH/2-121,100,1);
         paddle2 = new PongPaddle(BitmapFactory.decodeResource(resources, R.drawable.paddlef2),this.scrnW-60, this.scrnH/2-121,100,1);
 
-        /*paddleImage1 = new Image(R.drawable.paddlef1);
-        paddleImage2 = new Image(R.drawable.paddlef2);
-        ballImage = new Image(R.drawable.ball);
-
-        paddle1 = new Sprite(paddleImage1);
-        paddle2 = new Sprite(paddleImage2);
-        ball = new Sprite(ballImage);*/
-
-
-        //paddle1.setPosition(30, this.scrnH/2);
-        //paddle2.setPosition(this.scrnW-30, this.scrnH/2);
-        //ball.setPosition(this.scrnW/2, this.scrnH/2);
         //setRandomSpeed(ball);
         ball.setRandomSpeed();
 
@@ -72,6 +55,7 @@ public class PongState extends State implements TouchListener {
 
     @Override
     public boolean onTouchMove(MotionEvent event) {
+        ball.update(System.currentTimeMillis());
 
         float generatedX = event.getX();
         float generatedY = event.getY();
@@ -87,7 +71,6 @@ public class PongState extends State implements TouchListener {
 
     @Override
     public void update(float dt) {
-
         if(paddle1count==5){
             getGame().popState();
             getGame().pushState(new PongOver(1, resources, context));
@@ -97,12 +80,14 @@ public class PongState extends State implements TouchListener {
             getGame().pushState(new PongOver(2, resources, context));
         }
 
+        //DOESN'T WORK ANYMORE
         if(ball.collides(paddle1)){
             ball.setSpeed(-(ball.getSpeed().getX()+30), ball.getSpeed().getY()+30);
         }
         if(ball.collides(paddle2)){
             ball.setSpeed(-(ball.getSpeed().getX()+30), ball.getSpeed().getY()+30);
         }
+        //DOESN'T WORK ANYMORE
 
         if(ball.getY()>(canvasHeight) || ball.getY()<30){  //20 is the ball's height
             ball.setSpeed(ball.getSpeed().getX()+10, -(ball.getSpeed().getY()+10));

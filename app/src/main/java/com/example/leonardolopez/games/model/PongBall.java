@@ -1,10 +1,7 @@
 package com.example.leonardolopez.games.model;
 
 import android.graphics.Rect;
-import android.graphics.Matrix;
-import android.util.DisplayMetrics;
 import android.graphics.Canvas;
-import android.graphics.drawable.BitmapDrawable;
 import sheep.game.Sprite;
 import android.graphics.Bitmap;
 
@@ -39,8 +36,8 @@ public class PongBall extends Sprite {
 
     @Override
     public void draw(Canvas canvas) {
-        /*setX(getX() + getSpeed().getX()/100);
-        setY(getY() + getSpeed().getY()/100);*/
+        setX(getX() + getSpeed().getX()/100);
+        setY(getY() + getSpeed().getY()/100);
 
         Rect destRect = new Rect((int)x, (int)y, (int)x + spriteWidth, (int)y + spriteHeight);
         canvas.drawBitmap(this.bm, sourceRect, destRect, null);
@@ -57,11 +54,6 @@ public class PongBall extends Sprite {
     public int getSpriteHeight(){return spriteHeight;}
     public int getSpriteWidth(){return spriteWidth;}
 
-
-
-    public Rect getSpriteRect(){
-        return new Rect((int)getX(), (int)getY(), (int)getX() + spriteWidth, (int)getY() + spriteHeight);
-    }
 
 
     public void setRandomSpeed(){
