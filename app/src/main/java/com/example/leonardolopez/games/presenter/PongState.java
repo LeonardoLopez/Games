@@ -46,8 +46,8 @@ public class PongState extends State implements TouchListener {
         paddle2count = 0;
 
         ball = new PongBall(BitmapFactory.decodeResource(resources, R.drawable.ball),this.scrnW/2-30, this.scrnH/2,100,1);
-        paddle1 = new PongPaddle(BitmapFactory.decodeResource(resources, R.drawable.paddlef1),30, this.scrnH/2-60,100,1);
-        paddle2 = new PongPaddle(BitmapFactory.decodeResource(resources, R.drawable.paddlef2),this.scrnW-60, this.scrnH/2-60,100,1);
+        paddle1 = new PongPaddle(BitmapFactory.decodeResource(resources, R.drawable.paddlef1),30, this.scrnH/2-121,100,1);
+        paddle2 = new PongPaddle(BitmapFactory.decodeResource(resources, R.drawable.paddlef2),this.scrnW-60, this.scrnH/2-121,100,1);
 
         /*paddleImage1 = new Image(R.drawable.paddlef1);
         paddleImage2 = new Image(R.drawable.paddlef2);
@@ -73,13 +73,14 @@ public class PongState extends State implements TouchListener {
     @Override
     public boolean onTouchMove(MotionEvent event) {
 
-        if(event.getX()< this.scrnW/2){
-            paddle1.setPosition(paddle1.getX(), event.getY());
-            return true;
+        float generatedX = event.getX();
+        float generatedY = event.getY();
+
+        if(generatedX< this.scrnW/2){
+            return paddle1.move(generatedY, scrnH);
         }
-        if(event.getX()> this.scrnW/2){
-            paddle2.setPosition(paddle2.getX(), event.getY());
-            return true;
+        if(generatedX> this.scrnW/2){
+            return paddle2.move(generatedY, scrnH);
         }
         return false;
     }

@@ -76,5 +76,25 @@ public class PongPaddle extends Sprite {
         this.sourceRect.right = this.sourceRect.left + spriteWidth;
     }
 
+    public boolean move(float y, int scrnH){
+        //the Y increases from top (0) to down (screen height)
+        float lowEdge = scrnH-this.getSpriteHeight()-30;
+        float upEdge = 0;
+
+        if(this.y>upEdge && this.y<lowEdge) {
+            this.setPosition(this.x, y);
+            return true;
+        }
+        if(this.y<=upEdge) {
+            this.setPosition(this.x, upEdge+5);
+            return true;
+        }
+        if(this.y>=lowEdge) {
+            this.setPosition(this.x, lowEdge-5);
+            return true;
+        }
+        return false;
+    }
+
 
 }
