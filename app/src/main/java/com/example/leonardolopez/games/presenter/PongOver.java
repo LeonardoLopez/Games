@@ -41,7 +41,7 @@ public class PongOver extends State implements TouchListener {
     @Override
     public boolean onTouchUp(MotionEvent event) {
         getGame().popState();
-        getGame().pushState(new PongState(res, ctx));
+        getGame().pushState(PongState.getInstance(res, ctx));
         return true;
     }
 

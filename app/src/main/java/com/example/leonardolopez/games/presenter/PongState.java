@@ -28,8 +28,17 @@ public class PongState extends State implements TouchListener {
     private int scrnH;
     private PongBall ball;
     private PongPaddle paddle1,paddle2;
+    private static PongState instance = null;
 
-    public PongState(Resources res, Context con) {
+    public static synchronized PongState getInstance(Resources res, Context con) {
+        if (instance == null) {
+            instance = new PongState(res, con);
+        }
+
+        return instance;
+    }
+
+    private PongState(Resources res, Context con) {
         font = new Font(255, 255, 255, 100, Typeface.SERIF, Typeface.NORMAL);
         this.resources = res;
         this.context = con;

@@ -19,5 +19,12 @@ public class Pong extends Activity {
         setContentView(game);
     }
 
+    @Override
+    protected void onResume(){
+        super.onResume();
+        Game game = new Game(this, null);
+        game.pushState(new PongStart(game.getResources(), this.getBaseContext()));
+        setContentView(game);
+    }
 
 }
